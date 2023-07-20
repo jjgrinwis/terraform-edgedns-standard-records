@@ -10,7 +10,7 @@ terraform {
 locals {
   # regex to strip first part of a fqdn but it will return a list if using capture group ().
     # a.b.c => b.c; a.b.c.d => b.c.d
-  domain_name = regex("^[^.]+\\.(.+\\.\\w+)$", var.fqdn)
+  domain_name = regex("^[^.]+\\.(.+\\.\\w+)$", var.fqdn)[0]
 }
 
 # create our two required CNAME records
