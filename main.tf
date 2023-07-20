@@ -17,7 +17,7 @@ locals {
 # _dmarc.<subdomain>.<domain>.<tld> CNAME parkeddomain.dmarc.customer.com
 # _smtp._tls.<subdomain>.<domain>.<tld> CNAME tlsrpt.customer.com
 resource "akamai_dns_record" "dmarc_record" {
-    zone       = var.domain_name
+    zone       = local.domain_name
     name       = "_dmarc.${var.fqdn}"
     recordtype = "CNAME"
     ttl        = 600
@@ -25,7 +25,7 @@ resource "akamai_dns_record" "dmarc_record" {
 }
 
 resource "akamai_dns_record" "smtp_record" {
-    zone       = var.domain_name
+    zone       = local.domain_name
     name       = "_smtp._tls.${var.fqdn}"
     recordtype = "CNAME"
     ttl        = 1800
