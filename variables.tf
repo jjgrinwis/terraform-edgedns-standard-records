@@ -3,6 +3,6 @@ variable "fqdn" {
     type = string
     validation {
       condition = can(regex("^[[:alnum:]-]+(?:\\.[[:alnum:]-]+)+\\.[[:alpha:]]{2,}$", var.fqdn))
-    }
-    error_message = "Invalid entry in the fqdn set, should be <subdomain>*.<domain>.<fqdn>"
+      error_message = "Invalid entry in the fqdn set, should be <subdomain>*.<domain>.<fqdn>"
+    }    
 }
