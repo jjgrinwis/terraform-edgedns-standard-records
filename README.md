@@ -12,7 +12,7 @@ _smtp._tls.<subdomain>.<domain>.<tld> CNAME tlsrpt.<domain>.<tld>
 <subdomain>.<domain>.<tld> TXT "v=spf1 -all"
 ```
 
-Make sure zone are available in EdgeDNS as module won't create them for you!
+Make sure the zone is available in EdgeDNS as module won't create them for you!
 
 ## Table of Contents
 
@@ -22,16 +22,23 @@ Make sure zone are available in EdgeDNS as module won't create them for you!
 
 ## Installation
 
-Nothing to install, this is a module for Terraform Cloud.
+Nothing to install. Just use ```terraform login``` to create/use your token to be able to download this private module and set your EdgeDNS .edgerc credentials:
+
+```
+# $ export AKAMAI_CLIENT_SECRET="your_secret"
+# $ export AKAMAI_HOST="your_host"
+# $ export AKAMAI_ACCESS_TOKEN="your_access_token"
+# $ export AKAMAI_CLIENT_TOKEN="your_client_token"
+```
 
 ## Usage
 
-Just use this module and feed a set() of fqdn's to create these records for.
+Just use this module and feed a set() of fqdn's to create these records like in the example below.
 
 ```
 module "standard-records" {
   source  = "app.terraform.io/grinwis-com/standard-records/edgedns"
-  version = "0.0.1"
+  version = "0.0.4"
 
   # just loop through our list of entries we would like to add.
   for_each = var.fqdn_set
